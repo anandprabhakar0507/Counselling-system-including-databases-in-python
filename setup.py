@@ -75,16 +75,17 @@ def save_info():
     allocated = random.choice(lst1)
     if allocated in [cc1,cc2,cc3]:
     	allocated_branch = random.choice(lst2)
-    else:
+    elif allocated in [cc4,cc5,cc6]:
     	allocated_branch = random.choice(lst3)
-    
+    else:
+    	return 0
     
     messagebox.showinfo(title = "Summary",message="\tFirst Name: {0}\n\tLast Name : {1}\n\tRoll NO. : {2}\n\tMarks : {3}\n\tEmail : {4}\n\tMobile No. : {5}\n\tCollege Choices : {6},{7},{8},{9},{10},{11}\n\tDesired Branches : {12},{13},{14},{15},{16},{17}".format(FirstName,LastName,RollNo,boardmarks,Email,Mobile,cc1,cc2,cc3,cc4,cc5,cc6,bc1,bc2,bc3,bc4,bc5,bc6))
     messagebox.showinfo(title = "Expected Allotment Result",message = "Dear {0},\nBased on your choices we have alloted\nyou college,below..\n\tAlloted Collage = {1}\n\tAlloted Branch = {2}".format(FirstName,allocated,allocated_branch))
     messagebox.showinfo(title='You are Registered Successfully!' ,message ='\tRegistration Completed!\n\tYou Have Been Registered Successfully!\n\tFurther Information Regarding seat \n\tallotment will be sent to you on\n\t your Registered Mobile No.\n\tThank You..')
 
-    conn.execute("insert into students(FirstName, LastName,RollNo, Email,Mobile, BoardMarks, Mobile, cc1, bc1, cc2, bc2,cc3,bc3,cc4,bc4,cc5,bc5,cc6,bc6,alloted,alloted_branch) \
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?)",(FirstName,LastName,RollNo, boardmarks,boardper, Email,Mobile, cc1, bc1, cc2, bc2, cc3, bc3,cc4,bc4,cc5,bc5,cc6,bc6,allocated,allocated_branch))
+    conn.execute("insert into students(FirstName, LastName,RollNo, Email,Mobile, BoardMarks,Percentage, cc1, bc1, cc2, bc2,cc3,bc3,cc4,bc4,cc5,bc5,cc6,bc6,alloted,alloted_branch) \
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?)",(FirstName,LastName,RollNo, Email,Mobile,boardmarks,boardper, cc1, bc1, cc2, bc2, cc3, bc3,cc4,bc4,cc5,bc5,cc6,bc6,allocated,allocated_branch))
 
     conn.commit()
     '''
